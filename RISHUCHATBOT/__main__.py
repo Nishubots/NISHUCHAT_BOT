@@ -17,9 +17,9 @@ async def anony_boot():
     try:
         await RISHUCHATBOT.start()
         try:
-            await RISHUCHATBOT.send_message(int(OWNER_ID), f"**{RISHUCHATBOT.mention} Is started✅**")
+            await RISHUCHATBOT.send_message(int(OWNER_ID), f"**{NISHUCHATBOT.mention} Is started✅**")
         except Exception as ex:
-            LOGGER.info(f"@{RISHUCHATBOT.username} Started, please start the bot from owner id.")
+            LOGGER.info(f"@{NISHUCHATBOT.username} Started, please start the bot from owner id.")
     
         asyncio.create_task(restart_bots())
         asyncio.create_task(restart_idchatbots())
@@ -28,9 +28,9 @@ async def anony_boot():
             try:
                 await userbot.start()
                 try:
-                    await RISHUCHATBOT.send_message(int(OWNER_ID), f"**Id-Chatbot Also Started✅**")
+                    await NISHUCHATBOT.send_message(int(OWNER_ID), f"**Id-Chatbot Also Started✅**")
                 except Exception as ex:
-                    LOGGER.info(f"@{RISHUCHATBOT.username} Started, please start the bot from owner id.")
+                    LOGGER.info(f"@{NISHUCHATBOT.username} Started, please start the bot from owner id.")
     
             except Exception as ex:
                 print(f"Error in starting id-chatbot :- {ex}")
