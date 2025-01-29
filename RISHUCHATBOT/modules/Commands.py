@@ -36,7 +36,7 @@ lang_db = db.ChatLangDb.LangCollection
 status_db = db.chatbot_status_db.status
 
 
-@NISHUCHAT_BOT.on_message(
+@RISHUCHATBOT.on_message(
     filters.command(["restart"]) & filters.user(int(OWNER_ID))
 )
 async def restart(client: Client, message: Message):
@@ -69,7 +69,7 @@ async def set_language(client: Client, message: Message):
     )
 
 
-@NISHUCHAT_BOT.on_message(filters.command("status"))
+@RISHUCHATBOT.on_message(filters.command("status"))
 async def status_command(client: Client, message: Message):
     chat_id = message.chat.id
     chat_status = await status_db.find_one({"chat_id": chat_id})
@@ -80,7 +80,7 @@ async def status_command(client: Client, message: Message):
         await message.reply("No status found for this chat.")
 
 
-@NISHUCHAT_BOT.on_message(filters.command(["lang", "language", "setlang"]))
+@RISHUCHATBOT.on_message(filters.command(["lang", "language", "setlang"]))
 async def set_language(client: Client, message: Message):
     await message.reply_text(
         "Please select your chat language:",
@@ -88,14 +88,14 @@ async def set_language(client: Client, message: Message):
     )
 
 
-@NISHUCHAT_BOT.on_message(filters.command(["resetlang", "nolang"]))
+@RISHUCHATBOT.on_message(filters.command(["resetlang", "nolang"]))
 async def reset_language(client: Client, message: Message):
     chat_id = message.chat.id
     lang_db.update_one({"chat_id": chat_id}, {"$set": {"language": "nolang"}}, upsert=True)
     await message.reply_text("**Bot language has been reset in this chat to mix language.**")
 
 
-@NISHUCHAT_BOT.on_message(filters.command("chatbot"))
+@RISHUCHATBOT.on_message(filters.command("chatbot"))
 async def chatbot_command(client: Client, message: Message):
     await message.reply_text(
         f"Chat: {message.chat.title}\n**Choose an option to enable/disable the chatbot.**",
