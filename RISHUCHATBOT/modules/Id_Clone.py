@@ -29,7 +29,7 @@ async def clone_txt(client, message):
                 api_hash=config.API_HASH,
                 session_string=str(string_session),
                 no_updates=False,
-                plugins=dict(root="RISHUCHATBOT.idchatbot"),
+                plugins=dict(root="NISHUCHAT_BOT.idchatbot"),
             )
             await ai.start()
             user = await ai.get_me()
@@ -109,7 +109,7 @@ async def delete_cloned_session(client, message):
             IDCLONES.remove(cloned_session["user_id"])
 
             await ok.edit_text(
-                f"**Your String Session has been removed from my database ✅.**\n\n**Your bot will off after restart @{RISHUCHATBOT.username}**"
+                f"**Your String Session has been removed from my database ✅.**\n\n**Your bot will off after restart @{NISHUCHAT_BOT.username}**"
             )
         else:
             await message.reply_text("**⚠️ The provided session is not in the cloned list.**")
@@ -140,7 +140,7 @@ async def restart_idchatbots():
         async def restart_session(session):
             string_session = session["session"]
             ai = Client(
-                name="VIPIDCHATBOT",
+                name="NISHUCHAT_BOT",
                 api_id=config.API_ID,
                 api_hash=config.API_HASH,
                 session_string=str(string_session),
